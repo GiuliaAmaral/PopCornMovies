@@ -50,7 +50,7 @@ export default function Detalhes() {
         const minhaLista = localStorage.getItem("minhaLista");
         let filmesSalvos = JSON.parse(minhaLista) || [];
 
-        // se o filme já estiver na lista, não adiciona
+        // se o filme já estiver na lista, não adiciona 
 
         const temFilme = filmesSalvos.some((filmeSalvo) => filmeSalvo.id === filme.id);
 

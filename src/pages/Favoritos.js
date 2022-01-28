@@ -40,15 +40,15 @@ export default function Favoritos() {
             {(filmes.length === 0) ? (<>
 
 
-            <div className="container d-flex flex-column align-items-center">
+                <div className="container d-flex flex-column align-items-center">
 
-            <img width="100%" src={cinema} style={{width: '300px'}} alt="..."/>
+                    <img width="100%" src={cinema} style={{ width: '300px' }} alt="..." />
 
-            <h3>Não há filmes por aqui</h3>
+                    <h3>Não há filmes por aqui</h3>
 
 
 
-            </div>
+                </div>
 
 
 
@@ -56,26 +56,42 @@ export default function Favoritos() {
             </>) : (<>
 
 
-                <ul className="mt-5">
-                    {filmes.map((filme) => {
+                <div className="mt-5 container d-flex justify-content-center">
 
-                        return (
-                            <>
-                                <li className="mt-3" key={filme.id}>
-                                    <p>{filme.nome}</p>
-                                </li>
+                    <div className="lista-filmes">
 
-                                <button className="btn btn-danger" onClick={() => deletarItem(filme.id)}>Excluir</button>
+                        {filmes.map((filme) => {
 
-                                <Link to={`/detalhes/${filme.id}`} className="btn btn-danger" style={{marginLeft:'10px'}}>Abrir</Link>
+                            return (
+                                <>
+
+                                    <div key={filme.id} className="mt-4 card" style={{ width: '18rem' }}>
+
+                                        <Link to={`/detalhes/${filme.id}`} className="text-decoration-none text-dark">
+                                            <img width="100%" src={filme.foto} className="card-img-top" alt="..." />
+
+                                            <div className="card-body text-center">
+                                                <h5 className="card-title">{filme.nome}</h5>
+                                            </div>
+                                        </Link>
+
+                                        <div className="card-footer text-center">
+                                            <button className="btn btn-danger" onClick={() => deletarItem(filme.id)}>Excluir</button>
+                                        </div>
+
+                                    </div>
+
+                                </>
+                            )
+
+                        })}
+                    </div>
+
+                </div>
 
 
 
-                            </>
-                        )
-
-                    })}
-                </ul></>)
+            </>)
 
 
             }
